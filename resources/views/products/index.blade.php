@@ -11,6 +11,7 @@
             <th style="background-color: #007977;">Quantidade</th>
             <th style="background-color: #007977;">Preço</th>
             <th style="background-color: #007977;">Detalhes</th>
+            <th style="background-color: #007977;">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,22 @@
                 <a class="btn btn-outline-info" href="{{route('products.show', $product)}}">
                     <i class="bi bi-info-square"></i>
                 </a>
+            </td>
+            <td>
+                <a href="{{route('products.edit', $product)}}" class="btn btn-warning">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+                <form method="POST" action="{{route('products.destroy', $product)}}">
+                    @METHOD('DELETE')
+                    @csrf
+                    <button
+                        type="submit"
+                        class="btn btn-danger"
+                        onclick="return confirm('Deseja excluir esse produto?')"
+                    >
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </form>
             </td>
         </tr>
         @endforeach

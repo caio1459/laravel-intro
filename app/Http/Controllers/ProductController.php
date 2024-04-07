@@ -34,7 +34,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->except('_token');
+        Products::create($dados);
+        return redirect('/products');
     }
 
     /**
@@ -42,6 +44,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
+        //Pega somente uma linha utilizando o método find passando o id como parametro
         $product = Products::find($id);
         return view(
             'products.show',
@@ -56,7 +59,13 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //Busca o produto pelo id
+        $product = Products::find($id);
+        //Retorna ele na view
+        return view(
+            'products.edit',
+            ['product' => $product]
+        );
     }
 
     /**
@@ -64,7 +73,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //Busca o produto pelo id
+        $product = Products::find($id);
+        //Passa os dados que vão ser atualizados
+        $product->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'count' => $request->count,
+        ]);
+        return redirect('/products');
     }
 
     /**
@@ -72,6 +89,10 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //Busca o produto pelo id
+        $product = Products::find($id);
+        //Faz o delete
+        $product->delete();
+        return redirect('/products');
     }
 }
