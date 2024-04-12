@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function() {
+    return redirect('/products');
+});
+
 Route::get('/service/{id}', [SiteController::class, 'index']);
 Route::get('/comidas', [ComidaController::class, 'index'])->name('comidas.index');
 Route::get('/comidas/{id}', [ComidaController::class, 'show'])->name('comidas.show');

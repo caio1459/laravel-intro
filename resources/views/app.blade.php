@@ -12,7 +12,19 @@
 <body>
     <nav class="navbar bg-body-tertiary" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{route('products.index')}}" style="color: red; font-weight: 900;">SohBug</a>
+            <a class="navbar-brand" href="{{route('products.index')}}" style="color: red; font-weight: 900;">
+                SohBug
+            </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="{{route('clients.index')}}">
+                        Clientes
+                    </a>
+                    <a class="navbar-brand" href="{{route('products.index')}}">
+                        Produtos
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="container">
