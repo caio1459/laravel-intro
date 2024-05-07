@@ -23,6 +23,9 @@
                     <a class="navbar-brand" href="{{route('products.index')}}">
                         Produtos
                     </a>
+                    <a class="navbar-brand" href="{{route('cep.index')}}">
+                        Consultar CEP
+                    </a>
                 </li>
             </ul>
         </div>

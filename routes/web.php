@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CepController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ComidaController;
+use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', function () {
     return redirect('/products');
 });
 
@@ -44,3 +46,10 @@ Route::prefix('products')->group(function () {
     Route::put('/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
+
+Route::prefix('features')->group(function () {
+    Route::get('/', [FeatureController::class, 'index'])->name('features.index');
+});
+
+Route::get('/cep', [CepController::class, 'index'])->name('cep.index');
+Route::post('/cep', [CepController::class, 'search'])->name('cep.search');
